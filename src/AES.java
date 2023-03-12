@@ -153,8 +153,7 @@ class AES
      */
     private static String xTimes(String a)
     {
-        String s = "";
-        // Add code here for the xTimes method.
+        String s;
         char msd = a.charAt(0);
         s = a.substring(1) + '0';
 
@@ -178,7 +177,6 @@ class AES
     private static String multiplyPoly(String p, String q)
     {
         String pq = "00000000";
-        // Add code here to multiply two polynomials (in binary form).
         String xf = q;
         for (int i = p.length()-1; i >= 0; i--) {
             if (p.charAt(i) == '1') {
@@ -537,9 +535,8 @@ class AES
                 expandedKey[i+j/4][3] = keyTable[j+3];
             }
         }
-        // Add code here to fill in the rest of the expandedKey array.
 
-        // Solution (1)
+        // one way
 //        int[] temp;
 //        int Nk = 4;
 //        int i = Nk;
@@ -555,7 +552,7 @@ class AES
 //            i++;
 //        }
 
-        // Solution (2)
+        // another way
         for (int i = 0; i < 10; i++)
         {
             rotWords[i] = rotWord(expandedKey[4*i+3]);
@@ -708,7 +705,6 @@ class AES
     {
         int[][] state = initialState(message);
         int[][][] roundKeys = getRoundKeys(key);
-        // Add code here for the cipher method.
         state = addRoundKey(state, roundKeys[0]);
         for (int i = 1; i < 10; i++)
         {
@@ -730,7 +726,6 @@ class AES
     {
         int[][] state = initialState(cipherText);
         int[][][] roundKeys = getRoundKeys(key);
-        // Add code here for the invCipher method.
 
         state = addRoundKey(state, roundKeys[10]);
         for (int i = 9; i > 0; i--)
